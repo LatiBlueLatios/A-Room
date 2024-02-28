@@ -1,0 +1,16 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+#game-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+#choices {
+    margin-top: 20px;
+}

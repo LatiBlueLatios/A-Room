@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Room - A Psychological Exploration</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function isLatestJS() {
+            try {
+                // Check for support of ES6 features
+                const testFeatures = () => { };
+                const arrowFunction = () => 42;
+                const constVar = 42;
+                const destructuring = { x, y } = { x: 1, y: 2 };
+                const templateLiteral = `The answer is ${arrowFunction()}`;
+                const spreadOperator = [...[1, 2, 3]];
+                const promise = new Promise(resolve => resolve());
+
+                // If all the features are supported without throwing errors, then it's likely ES6 or later
+                return true;
+            } catch (error) {
+                // If any of the features throw an error, the browser may not support ES6 or later
+                return false;
+            }
+        }
+
+        if (isLatestJS()) {
+            console.log("The browser supports the latest version of JavaScript.");
+        } else {
+            window.alert("The browser does not support the latest version of JavaScript. The game will not run properly!");
+        }
+
+        function detectBrowser() {
+            const userAgent = navigator.userAgent;
+            let browser;
+            let version;
+
+            switch (true) {
+                case userAgent.includes("Chrome"):
+                    browser = "Google Chrome";
+                    version = userAgent.substring(userAgent.indexOf("Chrome") + 7).split(" ")[0];
+                    break;
+                case userAgent.includes("Firefox"):
+                    browser = "Mozilla Firefox";
+                    version = userAgent.substring(userAgent.indexOf("Firefox") + 8).split(" ")[0];
+                    break;
+                case userAgent.includes("Edge"):
+                    browser = "Microsoft Edge";
+                    version = userAgent.substring(userAgent.indexOf("Edge") + 5).split(" ")[0];
+                    alert("Stop edging, just please stop edging to Mark Zuckerberg!");
+                    break;
+                case userAgent.includes("Safari"):
+                    browser = "Apple Safari";
+                    version = userAgent.substring(userAgent.indexOf("Version") + 8).split(" ")[0];
+                    // Why is the sources tab so fire ngl
+                    break;
+                case userAgent.includes("Opera") || userAgent.includes("OPR"):
+                    browser = "Opera";
+                    version = userAgent.substring(userAgent.indexOf("OPR") + 4).split(" ")[0] || userAgent.substring(userAgent.indexOf("Opera") + 6).split(" ")[0];
+                    break;
+                default:
+                    browser = "Unknown";
+                    version = "N/A";
+                    break;
+            }
+
+            return { browser, version };
+        }
+
+        const { browser, version } = detectBrowser();
+        console.log("User's browser:", browser);
+        console.log("Browser version:", version);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</head>
+
+<body>
+    <h1>! This is meant to be a test sample !</h1>
+    <div id="game-container">
+        <div id="room-desc">
+            <!-- Room description will go here -->
+            <p>You’re in a room painted with the grayscale of your emotions…</p>
+        </div>
+
+        <div id="choices">
+            <!-- Choices will be appended here by JavaScript -->
+        </div>
+
+        <div id="outcome">
+            <!-- Outcome of choices will be shown here -->
+        </div>
+    </div>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>
